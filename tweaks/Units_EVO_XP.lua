@@ -1,6 +1,8 @@
 -- EVO_XP_START
+local smatch = string.match
+local pairs = pairs
 for name, ud in pairs(UnitDefs) do
-	if string.match(name, 'comlvl%d') or string.match(name, 'armcom') or string.match(name, 'corcom') or string.match(name, 'legcom') then
+	if smatch(name, 'comlvl%d') or smatch(name, 'armcom') or smatch(name, 'corcom') or smatch(name, 'legcom') then
 		ud.customparams = ud.customparams or {}
 		ud.customparams.inheritxpratemultiplier = 0.5
 		ud.customparams.childreninheritxp = 'TURRET MOBILEBUILT'

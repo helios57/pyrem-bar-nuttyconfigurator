@@ -611,6 +611,20 @@ async function generateDynamicCheckboxUI(tweakFileCache, updateOutputCallback) {
         fileLabel.htmlFor = parentCheckbox.id;
         fileLabel.textContent = isMainGroup ? `${displayName} (Always Enabled)` : displayName;
 
+        // Add tooltip from metadata if available
+        if (fileGroups[0] && fileGroups[0].fileName) {
+            const internalName = fileGroups[0].fileName.replace(/^(Defs_|Units_)/, '');
+            if (typeof window.getTweakDescription === 'function') {
+                const desc = window.getTweakDescription(internalName);
+                if (desc) {
+                    fileLabel.title = desc;
+                    // Add subtle visual hint for hoverable items
+                    fileLabel.style.textDecoration = 'underline dotted #666 1px';
+                    fileLabel.style.textUnderlineOffset = '3px';
+                }
+            }
+        }
+
         fileHeaderLeft.appendChild(parentCheckbox);
         fileHeaderLeft.appendChild(fileLabel);
         fileHeader.appendChild(fileHeaderLeft);
@@ -737,6 +751,13 @@ async function generateDynamicCheckboxUI(tweakFileCache, updateOutputCallback) {
 
                 const label = document.createElement('label');
                 label.className = 'section-checkbox';
+
+                // Sub-option generic tooltip
+                if (matchedOption && matchedOption.label) {
+                    label.title = matchedOption.label;
+                    label.style.textDecoration = 'underline dotted #555 1px';
+                    label.style.textUnderlineOffset = '2px';
+                }
 
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';

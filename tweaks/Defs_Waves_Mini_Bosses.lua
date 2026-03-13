@@ -8,10 +8,19 @@
 do
 local a,b,c,d,e,
 f=UnitDefs or {},table.merge,table.copy,'raptor_matriarch_basic','customfusionexplo',Spring;
+
+-- Cache globals for speed parsing
+local math_max = math.max
+local math_min = math.min
+local math_ceil = math.ceil
+local math_floor = math.floor
+local pairs = pairs
+local ipairs = ipairs
+
 local g,
 h=1.3,1.3;
-h=a[d].health/60000;
-g=a['raptor_queen_epic'].health/1250000;
+h=20;
+g=250;
 local i=1;
 if f.Utilities.Gametype.IsRaptors()then
     i=(#f.GetTeamList()-2)/12
@@ -19,29 +28,29 @@ end
 local j=f.GetModOptions().raptor_spawncountmult or 3;
 local i=i*(j/3)
 local
-function j(a)return math.max(1,math.ceil(a*i))
+function j(a)return math_max(1,math_ceil(a*i))
 end
 local i= {70,85,90,105,110,125
 }
-local k=math.max(1,f.GetModOptions().raptor_queentimemult or 1.3)
+local k=math_max(1,f.GetModOptions().raptor_queentimemult or 1.3)
 local l,
 m=i[1],i[#i]
 local n=k*i[#i]/1.3;
 local m=(n-l)/(m-l)
 for a=2,#i do
-    i[a]=math.floor(l+(
+    i[a]=math_floor(l+(
     i[a]-l)*m)
 end
 local f=f.GetModOptions().raptor_queen_count or 1;
 local l=1;
-l=math.min(10,g/1.3*0.9)
+l=math_min(10,g/1.3*0.9)
 local g=20;
-local m=10*(1.06^math.max(0,math.min(f,g)-8))
-local g=math.max(0,f-g)
+local m=10*(1.06^math_max(0,math_min(f,g)-8))
+local g=math_max(0,f-g)
 local g=m+g;
-local g=math.ceil(l*g)
+local g=math_ceil(l*g)
 local g=k*100+g;
-local f=math.max(3,j(math.floor((21*f+36)/19)))
+local f=math_max(3,j(math_floor((21*f+36)/19)))
 local
 function k(c,d,e)
     if a[c]and not a[d]then
@@ -101,7 +110,7 @@ k('critter_penguinking','raptor_consort', {
     stealth=false,
     speed=67.5,
     customparams= {
-        i18n_en_humanname='Raptor Consort',i18n_en_tooltip='Sneaky powerful little terror.'
+        i18n_en_humanname='Raptor Consort',i18n_en_tooltip='Sneaky and powerful little terror.'
     }
 })
 a.raptor_consort.weapondefs.goo=c(a['raptor_queen_epic'].weapondefs.goo)
@@ -111,7 +120,7 @@ k('raptor_consort','raptor_doombringer', {
     health=d*12,
     speed=50,
     customparams= {
-        i18n_en_humanname='Doombringer',i18n_en_tooltip=[[Your time is up. The Queens called for backup.]]
+        i18n_en_humanname='Doombringer',i18n_en_tooltip='The ultimate alpha raptor strain.'
         }
     })
     local

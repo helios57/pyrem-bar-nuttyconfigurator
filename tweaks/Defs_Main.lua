@@ -7,8 +7,14 @@
 -- MAIN_DEFS_START
 local a, pairs, c = UnitDefs or {}, pairs, table.merge;
 
+local ssub = string.sub
+local smatch = string.match
+local tmerge = table.mergeInPlace or table.merge
+
 for i,j in pairs(a)do
-    if string.sub(i,1,24)=='raptor_air_fighter_basic'then
+    local is_raptor_fighter = ssub(i,1,24) == 'raptor_air_fighter_basic'
+    
+    if is_raptor_fighter then
         if j.weapondefs then
             for g,k in pairs(j.weapondefs)do
                 k.name='Spike'
@@ -47,23 +53,31 @@ for i,j in pairs(a)do
             end
         end
     else
-    if i:match'^[acl][ore][rgm]com'and not i:match'_scav$'then
-        table.mergeInPlace(j, {
-            customparams= {
-                combatradius=0,
-                fall_damage_multiplier=0,
-                paratrooper=true,
-                wtboostunittype= {}
-            },
-            featuredefs= {
-                dead= {
-                    damage=9999999,
-                    reclaimable=false,
-                    mass=9999999
+        if smatch(i, '^[acl][ore][rgm]com') and not smatch(i, '_scav$') then
+            tmerge(j, {
+                customparams= {
+                    combatradius=0,
+                    fall_damage_multiplier=0,
+                    paratrooper=true,
+                    wtboostunittype= {}
+                },
+                featuredefs= {
+                    dead= {
+                        damage=9999999,
+                        reclaimable=false,
+                        mass=9999999
+                    }
                 }
-            }
-        })
+            })
+        end
     end
+
+    -- Single pass optimizations
+    if j.builder == true then
+        if j.canfly == true then
+            j.explodeas = ''
+            j.selfdestructas = ''
+        end
     end
 end
 local l= {
@@ -167,14 +181,7 @@ for g,o in pairs({'raptor_antinuke','raptor_turret_acid_t2_v1','raptor_turret_ac
         end
     end
 end
-for g,r in pairs(a)do
-    if r.builder==true then
-        if r.canfly==true then
-            r.explodeas=''
-            r.selfdestructas=''
-        end
-    end
-end
+
 local s= {'raptor_air_bomber_basic_t2_v1','raptor_air_bomber_basic_t2_v2','raptor_air_bomber_basic_t4_v1','raptor_air_bomber_basic_t4_v2','raptor_air_bomber_basic_t1_v1'
 }
 for g,t in pairs(s)do
@@ -236,7 +243,7 @@ local I= {
         }, {"raptor_land_assault_basic_t2_v1","raptor_hive_assault_basic", {
             name="Armored Assault Raptor",
             customparams= {
-                i18n_en_humanname="Armored Assault Raptor",i18n_en_tooltip="Heavy, slow, and unyielding—these beasts are made to take the hits others cant."
+                i18n_en_humanname="Armored Assault Raptor",i18n_en_tooltip="Heavy, slow, and unyielding—these beasts are made to take the hits others can't."
             }
         }
         }, {"raptor_land_assault_basic_t4_v1","raptor_hive_assault_heavy", {
@@ -260,7 +267,7 @@ local I= {
             }, {"raptor_land_swarmer_acids_t2_v1","raptor_land_swarmer_acids_t2_v1", {
                 name="Acid Spawnling",
                 customparams= {
-                    i18n_en_humanname="Acid Spawnling",i18n_en_tooltip="This critters are so cute but can be so deadly at the same time."
+                    i18n_en_humanname="Acid Spawnling",i18n_en_tooltip="These critters may look cute, but they are incredibly deadly."
                 }
             }
         }

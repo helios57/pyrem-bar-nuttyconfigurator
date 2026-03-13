@@ -7,7 +7,7 @@ do
 local a,b,c = UnitDefs or {}, table.merge, 'armannit4'
 a[c] = b(a['armannit3'], {
     name='Legendary Pulsar',
-    description='Rapid tachyon burst supergun.',
+    description='Legendary rapid-fire tachyon supergun',
     buildtime=240000,
     health=30000,
     metalcost=43840,
@@ -88,7 +88,7 @@ local a,b,c = UnitDefs or {}, table.merge, 'legbastiont4'
 a[c] = b(
 a['legbastion'], {
     name='Legendary Bastion',
-    description='Purple heatray defensive tower.',
+    description='Legendary sweeping heatray tower',
     health=28000,
     metalcost=65760,
     energycost=1986500,
@@ -184,7 +184,7 @@ local a,b,c = UnitDefs or {}, table.merge, 'cordoomt4'
 a[c] = b(
 a['cordoomt3'], {
     name='Legendary Bulwark',
-    description='Defensive bulwark annihilates approachers',
+    description='Legendary plasma annihilation bulwark',
     buildtime=250000,
     health=42000,
     metalcost=61650,

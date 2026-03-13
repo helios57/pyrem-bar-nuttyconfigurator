@@ -6,7 +6,7 @@ do
 local a,b=UnitDefs or{},table.merge
 a.epic_ragnarok=b(a['armvulc'],{
   name='Epic Ragnarok',
-  description='Beam supergun deletes distant heavies by Altwaal',
+  description='Superheavy anti-armor beam weapon',
   buildtime=920000,
   maxthisunit=80,
   health=140000,
@@ -18,7 +18,7 @@ a.epic_ragnarok=b(a['armvulc'],{
   icontype="armvulc",
   customparams={
     i18n_en_humanname='Epic Ragnarok',
-    i18n_en_tooltip='Ultimate Rapid-Fire Laser Beams Blaster by Altwaal',
+    i18n_en_tooltip='Ultimate rapid-fire laser beam blaster',
     techlevel=4
   },
   weapondefs={
@@ -111,7 +111,7 @@ do
 local a,b=UnitDefs or{},table.merge
 a.epic_calamity=b(a['corbuzz'],{
   name='Epic Calamity',
-  description='Huge plasma sieges slow groups by Altwaal',
+  description='Massive plasma siege cannon',
   maxthisunit=80,
   footprintx=6,
   footprintz=6,
@@ -123,7 +123,7 @@ a.epic_calamity=b(a['corbuzz'],{
   icontype="corbuzz",
   customparams={
     i18n_en_humanname='Epic Calamity',
-    i18n_en_tooltip='Ultimate Rapid-Fire Laser Machine Gun by Altwaal',
+    i18n_en_tooltip='Superheavy rapid-fire plasma onslaught',
     techlevel=4
   },
   weapondefs={
@@ -213,7 +213,7 @@ do
 local a,b=UnitDefs or{},table.merge
 a.epic_starfall=b(a['legstarfall'],{
   name='Epic Starfall',
-  description='Rapid-fire Ion Plasma by Altwaal',
+  description='Rapid-fire ion plasma cannon',
   buildtime=920000,
   health=145000,
   metalcost=180000,
@@ -224,7 +224,7 @@ a.epic_starfall=b(a['legstarfall'],{
   footprintz=6,
   customparams={
     i18n_en_humanname='Epic Starfall',
-    i18n_en_tooltip='Rapid-fire Ion Plasma by Altwaal',
+    i18n_en_tooltip='Devastating rapid-fire ion plasma weaponry',
     techlevel=4,
     modelradius=150
   },
@@ -237,7 +237,7 @@ a.epic_starfall=b(a['legstarfall'],{
       avoidfeature=0,
       avoidfriendly=0,
       avoidground=false,
-      burst=61,
+      burst=20,
       burstrate=0.10,
       sprayangle=20,
       highTrajectory=1,
@@ -251,7 +251,7 @@ a.epic_starfall=b(a['legstarfall'],{
       explosiongenerator="custom:starfire-explosion",
       gravityaffected="true",
       impulsefactor=0.5,
-      name="Very Long-Range High-Trajectory 63-Salvo Plasma Launcher",
+      name="Very Long-Range High-Trajectory 21-Salvo Plasma Launcher",
       noselfdamage=true,
       range=3150,
       reloadtime=8,
@@ -266,9 +266,9 @@ a.epic_starfall=b(a['legstarfall'],{
       weaponvelocity=650,
       windup = 5,
       damage={
-        default=2200,
-        shields=740,
-        subs=220
+        default=6600,
+        shields=2220,
+        subs=660
       },
     }
   },
@@ -318,7 +318,7 @@ do
 local a,b=UnitDefs or{},table.merge
 a.epic_bastion=b(a['legbastion'],{
   name='Epic Bastion',
-  description='Heat ray tower melts swarms by Altwaal',
+  description='Superheavy sweeping heat ray',
   buildtime=150000,
   footprintx=6,
   footprintz=6,
@@ -331,7 +331,7 @@ a.epic_bastion=b(a['legbastion'],{
   paralyzemultiplier=0.4,
   customparams={
     i18n_en_humanname='Epic Bastion',
-    i18n_en_tooltip='Sweeping heat ray; place on approach lanes to clear waves by Altwaal',
+    i18n_en_tooltip='Sweeping heat ray; place on approach lanes to clear waves',
     techlevel=3
   },
   weapondefs={
@@ -502,7 +502,7 @@ do
 local a,b=UnitDefs or{},table.merge
 a.epic_fortress=b(a['legapopupdef'],{
   name='Epic Fortress',
-  description='EMP proof Swarm Destroyer by Pyrem',
+  description='Superheavy EMP-resistant swarm destroyer',
   buildtime=300000,
   health=60000,
   metalcost=25200,
@@ -510,7 +510,7 @@ a.epic_fortress=b(a['legapopupdef'],{
   sightdistance=1500,
   customparams={
     i18n_en_humanname='Epic Fortress',
-    i18n_en_tooltip='EMP proof Swarm Destroyer by Pyrem',
+    i18n_en_tooltip='Deploys continuous plasma barrages resistant to EMP',
     techlevel=3,
     paralyzemultiplier=0.0
   },
@@ -633,3 +633,169 @@ end
 ensureBuildOptions(builders_leg, 'epic_fortress')
 end
 -- FORTRESS_END
+
+-- EPIC_AA_START
+do
+local a,b=UnitDefs or{},table.merge
+
+-- Armada Epic Mercury
+a.epic_mercury=b(a['armmercury'],{
+  name='Epic Mercury',
+  description='Legendary long-range rapid guided missiles',
+  buildtime=280000,
+  maxthisunit=20,
+  health=130000,
+  footprintx=6,
+  footprintz=6,
+  metalcost=160000,
+  energycost=3300000,
+  icontype="armmercury",
+  customparams={
+    i18n_en_humanname='Epic Mercury',
+    i18n_en_tooltip='Ultimate long-range ultra-fast guided missile platform',
+    techlevel=4
+  },
+  weapondefs={
+    epic_advsam={
+      areaofeffect=1200,
+      energypershot=20000,
+      explosiongenerator='custom:flak',
+      flighttime=3,
+      metalpershot=120,
+      name='Legendary rapid-fire g2a guided missile launcher',
+      range=6000,
+      reloadtime=0.4,
+      smoketrail=false,
+      startvelocity=4000,
+      weaponacceleration=2000,
+      weaponvelocity=9000,
+	  damage={
+        default=5500,
+        vtol=6500,
+      }
+    }
+  },
+  weapons={
+    [1]={
+      def='epic_advsam'
+    }
+  }
+})
+
+-- Cortex Epic Screamer
+a.epic_screamer=b(a['corscreamer'],{
+  name='Epic Screamer',
+  description='Legendary heavy guided flak missile platform',
+  buildtime=280000,
+  maxthisunit=20,
+  health=130000,
+  footprintx=6,
+  footprintz=6,
+  metalcost=165000,
+  energycost=3200000,
+  icontype="corscreamer",
+  customparams={
+    i18n_en_humanname='Epic Screamer',
+    i18n_en_tooltip='Ultimate heavy flak missile area-denial platform',
+    techlevel=4
+  },
+  weapondefs={
+    epic_cor_advsam={
+      areaofeffect=2500,
+      energypershot=20000,
+      explosiongenerator='custom:flak',
+      flighttime=2,
+      metalpershot=200,
+      name='Legendary long-range g2a guided heavy flak missile launcher',
+      range=6500,
+      reloadtime=0.9,
+      smoketrail=false,
+      startvelocity=7000,
+      weaponacceleration=3000,
+      weaponvelocity=12000,
+	  damage={
+        default=8500,
+        vtol=9500,
+      }
+    }
+  },
+  weapons={
+    [1]={
+      def='epic_cor_advsam'
+    }
+  }
+})
+
+-- Legion Epic Flak
+a.epic_flak=b(a['legflak'],{
+  name='Epic Flak Cannon',
+  description='Legendary super-heavy repeating flak cannons',
+  buildtime=190000,
+  maxthisunit=40,
+  health=140000,
+  footprintx=5,
+  footprintz=5,
+  metalcost=82000,
+  energycost=1300000,
+  icontype="legflak",
+  customparams={
+    i18n_en_humanname='Epic Flak Cannon',
+    i18n_en_tooltip='Ultimate devastating multi-burst area-of-effect suppression',
+    techlevel=4
+  },
+  weapondefs={
+    epic_legflak_gun={
+      collidefriendly=0,
+      collidefeature=0,
+      avoidfeature=0,
+      avoidfriendly=0,
+      areaofeffect=1800,
+      burst=12,
+	  burstrate=0.1,
+      range=4500,
+	  reloadtime=2.0,
+      intensity=0.6,
+      weaponvelocity=4500,
+	  damage={
+        default=2500,
+        vtol=3500,
+      }
+    }
+  },
+  weapons={
+    [1]={
+      def='epic_legflak_gun'
+    }
+  }
+})
+
+local builders_arm={'armaca','armack','armacsub','armacv','armt3airaide','armt3aide'}
+local builders_cor={'coraca','corack','coracsub','coracv','cort3airaide','cort3aide'}
+local builders_leg={'legaca','legack','legacsub','legacv','legt3airaide','legt3aide'}
+
+local function ensureBuildOptions(list, name)
+	if not a[name] then return end
+	for i=1, #list do
+		local u = a[list[i]]
+		if u then
+			u.buildoptions = u.buildoptions or {}
+			local found = false
+			for j=1, #u.buildoptions do
+				if u.buildoptions[j] == name then found = true; break end
+			end
+			if not found then table.insert(u.buildoptions, name) end
+		end
+	end
+end
+
+for i=3,10 do
+	builders_arm[#builders_arm+1]='armcomlvl'..i
+	builders_cor[#builders_cor+1]='corcomlvl'..i
+	builders_leg[#builders_leg+1]='legcomlvl'..i
+end
+
+ensureBuildOptions(builders_arm, 'epic_mercury')
+ensureBuildOptions(builders_cor, 'epic_screamer')
+ensureBuildOptions(builders_leg, 'epic_flak')
+end
+-- EPIC_AA_END

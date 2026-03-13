@@ -179,7 +179,7 @@
     raptor_hive= {
         weapondefs= {
             antiground= {
-                burst=5,
+                burst=2,
                 burstrate=0.01,
                 cegtag='arty-heavy-purple',
                 explosiongenerator='custom:dirt',
@@ -198,12 +198,12 @@
                     shields=100
                 },
                 customparams= {
-                    spawns_count=15,
+                    spawns_count=4,
                     spawns_expire=11,
                     spawns_mode='random',
                     spawns_name='raptor_land_swarmer_basic_t1_v1 raptor_land_swarmer_basic_t1_v1 raptor_land_swarmer_basic_t1_v1 ',
                     spawns_surface='LAND SEA',
-                    stockpilelimit=10
+                    stockpilelimit=4
                 }
             }
         }

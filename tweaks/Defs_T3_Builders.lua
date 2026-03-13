@@ -41,7 +41,7 @@ for l,m in pairs(b)do
         canrepeat=true,
         objectname=p and'Units/legnanotcbase.s3o'or o and'Units/CORRESPAWN.s3o'or'Units/ARMRESPAWN.s3o',
         customparams= {
-            i18n_en_humanname='T3 Construction Turret',i18n_en_tooltip='More BUILDPOWER! For the connoisseur'
+            i18n_en_humanname='T3 Construction Turret',i18n_en_tooltip='High-tier construction turret'
         }
     })
     h(p and'legamstor'or m..'uwadvms',p and'legamstort3'or m..'uwadvmst3', {
@@ -51,10 +51,10 @@ for l,m in pairs(b)do
         buildtime=142800,
         health=53560,
         maxthisunit=10,
-        icontype="armuwadves",
+        icontype="armmstor",
         name=d[m]..'T3 Metal Storage',
         customparams= {
-            i18n_en_humanname='T3 Hardened Metal Storage',i18n_en_tooltip=[[The big metal storage tank for your most precious resources. Chopped chicken!]]
+            i18n_en_humanname='T3 Hardened Metal Storage',i18n_en_tooltip='Heavily armored high-capacity metal storage'
             }
         })
         h(p and'legadvestore'or m..'uwadves',p and'legadvestoret3'or m..'advestoret3', {
@@ -67,7 +67,7 @@ for l,m in pairs(b)do
             maxthisunit=10,
             name=d[m]..'T3 Energy Storage',
             customparams= {
-                i18n_en_humanname='T3 Hardened Energy Storage',i18n_en_tooltip='Power! Power! We need power!1!'
+                i18n_en_humanname='T3 Hardened Energy Storage',i18n_en_tooltip='Heavily armored high-capacity energy storage'
             }
         })
         for l,q in pairs({
@@ -139,7 +139,7 @@ for l,m in pairs(b)do
             customparams= {
                 subfolder='ArmBots/T3',
                 techlevel=3,
-                unitgroup='buildert3',i18n_en_humanname='Epic Ground Construction Aide',i18n_en_tooltip='Your Aide that helps you construct buildings'
+                unitgroup='buildert3',i18n_en_humanname='Epic Ground Construction Aide',i18n_en_tooltip='Assists in constructing experimental units'
             },
             buildoptions=t
         })
@@ -172,7 +172,7 @@ for l,m in pairs(b)do
                 is_builder=true,
                 subfolder='ArmBots/T3',
                 techlevel=3,
-                unitgroup='buildert3',i18n_en_humanname='Epic Air Construction Aide',i18n_en_tooltip='Your Aide that helps you construct buildings'
+                unitgroup='buildert3',i18n_en_humanname='Epic Air Construction Aide',i18n_en_tooltip='Assists in constructing experimental units'
             },
             buildoptions=t
         })

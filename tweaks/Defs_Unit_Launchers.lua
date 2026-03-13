@@ -13,7 +13,7 @@ local b= {
         customparams= {
 
             i18n_en_humanname='Armada T3 Launcher',
-            i18n_en_tooltip='Launches Titan, Thor & Ratte by Pyrem'
+            i18n_en_tooltip='Fabricates and launches T3 Armada units'
         },
         weapondefs= {
             arm_botrail= {
@@ -37,7 +37,7 @@ local b= {
         customparams= {
 
             i18n_en_humanname='Cortex T3 Launcher',
-            i18n_en_tooltip='Launches Tzar, Behemoth & Juggernaut by Pyrem'
+            i18n_en_tooltip='Fabricates and launches T3 Cortex units'
         },
         weapondefs= {
             arm_botrail= {
@@ -61,7 +61,7 @@ local b= {
         customparams= {
 
             i18n_en_humanname='Legion T3 Launcher',
-            i18n_en_tooltip='Launches Sols (2 Types) by Pyrem'
+            i18n_en_tooltip='Fabricates and launches T3 Legion units'
         },
         weapondefs= {
             arm_botrail= {

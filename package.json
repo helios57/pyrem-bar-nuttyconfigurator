@@ -1,0 +1,27 @@
+{
+  "name": "pyrem-bar-nuttyconfigurator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node start",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helios57/pyrem-bar-nuttyconfigurator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/helios57/pyrem-bar-nuttyconfigurator/issues"
+  },
+  "homepage": "https://github.com/helios57/pyrem-bar-nuttyconfigurator#readme",
+  "devDependencies": {
+    "jest": "^30.3.0",
+    "luaparse": "^0.3.1",
+    "wasmoon": "^1.16.0"
+  }
+}

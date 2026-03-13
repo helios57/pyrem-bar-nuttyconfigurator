@@ -38,7 +38,7 @@
     },
     "NuttyB_Evolving_Commanders": {
       "display": "NuttyB Evolving Commanders",
-      "description": "Enable evolving commanders for all factions (Armada, Cortex, Legion)",
+      "description": "Enable evolving commanders for all factions (Armada, Cortex, Legion). Scales massively up to Level 6 with Apocalyptic-tier weaponry and massive shields.",
       "slot_type": "tweakunits",
       "column": "left",
       "options": [
@@ -305,10 +305,19 @@
         },
         {
           "id": "fortress",
-          "label": "EPIC FORTRESS",
+          "label": "Epic Fortress (Legion) - Ultimate defensive bastion",
           "markers": {
             "start": "-- FORTRESS_START",
             "end": "-- FORTRESS_END"
+          },
+          "default": true
+        },
+        {
+          "id": "epic_aa",
+          "label": "Epic Anti-Air (All Factions) - Legendary rapid-fire flak & SAMs",
+          "markers": {
+            "start": "-- EPIC_AA_START",
+            "end": "-- EPIC_AA_END"
           },
           "default": true
         },

@@ -6,9 +6,14 @@ do
 local defs = UnitDefs or {}
 local merge = table.merge
 local copy = table.copy
+local pairs = pairs
+local type = type
+local next = next
+local mmax = math.max
+local mfloor = math.floor
 
 local function scaled(value, multiplier)
-    return math.max(1, math.floor(value * multiplier + 0.5))
+    return mmax(1, mfloor(value * multiplier + 0.5))
 end
 
 local function applyWeaponTweak(weaponDef, tweak)
@@ -279,19 +284,19 @@ local function assignSquad(name, params, label, tooltip)
 end
 
 assignSquad('raptor_land_assault_basic_t2_v1', squad(0, 18, 'berserk', 6, 'basic', 7, 500, 0.82))
-assignSquad('raptor_land_swarmer_basic_t2_v1', squad(4, 18, 'raider', 14, 'basic', 9, 500, 0.8))
-assignSquad('raptor_land_swarmer_emp_t2_v1', squad(12, 26, 'raider', 10, 'basic', 8, 500, 0.78), 'Shock Swarmer', 'Fast control packs that signal Doom Mode is ramping.')
+assignSquad('raptor_land_swarmer_basic_t2_v1', squad(4, 18, 'raider', 7, 'basic', 9, 500, 0.8))
+assignSquad('raptor_land_swarmer_emp_t2_v1', squad(12, 26, 'raider', 5, 'basic', 8, 500, 0.78), 'Shock Swarmer', 'Fast control packs that signal Doom Mode is ramping.')
 assignSquad('raptor_doom_shockling', squad(18, 34, 'raider', 6, 'special', 6, 550, 0.8))
 assignSquad('raptor_allterrain_arty_emp_t2_v1', squad(20, 38, 'artillery', 4, 'special', 4, 1600, 0.72), 'Shock Mortar', 'EMP siege support for shock-themed waves.')
 assignSquad('raptor_doom_shockmaw', squad(28, 48, 'berserk', 3, 'special', 3, 600, 0.82))
 assignSquad('raptor_doom_ionmortar', squad(58, 92, 'artillery', 2, 'special', 2, 2200, 0.68))
 
-assignSquad('raptor_land_swarmer_acids_t2_v1', squad(10, 24, 'raider', 12, 'basic', 8, 500, 0.8), 'Blight Swarmer', 'Corrosive flankers that make acid bloom waves feel unfair in the right way.')
+assignSquad('raptor_land_swarmer_acids_t2_v1', squad(10, 24, 'raider', 6, 'basic', 8, 500, 0.8), 'Blight Swarmer', 'Corrosive flankers that make acid bloom waves feel unfair in the right way.')
 assignSquad('raptor_doom_blightling', squad(18, 36, 'raider', 7, 'special', 6, 550, 0.8))
 assignSquad('raptor_allterrain_arty_acid_t2_v1', squad(22, 42, 'artillery', 4, 'special', 3, 1800, 0.72), 'Blight Mortar', 'Acid artillery used in bloom-themed pressure waves.')
 assignSquad('raptor_doom_blightmatron', squad(52, 82, 'berserk', 1, 'special', 2, 650, 0.6))
 
-assignSquad('raptor_land_swarmer_fire_t2_v1', squad(14, 30, 'berserk', 10, 'basic', 6, 500, 0.78), 'Cinder Swarmer', 'Pyro rushers for stampede waves.')
+assignSquad('raptor_land_swarmer_fire_t2_v1', squad(14, 30, 'berserk', 5, 'basic', 6, 500, 0.78), 'Cinder Swarmer', 'Pyro rushers for stampede waves.')
 assignSquad('raptor_land_assault_basic_t4_v1', squad(24, 45, 'berserk', 4, 'special', 4, 550, 0.76), 'Stampede Brawler', 'Heavy bruisers that replace raw count with raw panic.')
 assignSquad('raptor_doom_cindermaw', squad(30, 58, 'berserk', 3, 'special', 3, 600, 0.82))
 

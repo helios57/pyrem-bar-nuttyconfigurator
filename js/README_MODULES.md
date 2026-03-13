@@ -45,7 +45,26 @@ Modules are loaded in `index.html` via standard `<script>` tags. Order matters f
 ### Custom Tweaks
 `custom-tweaks.js` handles user input, base64 encoding/decoding, and local storage persistence.
 
-## Testing
-- Run `npm run server` to start the local dev server.
-- Use the "Rebuild" button in the UI to force a refresh of the output.
-- Check browser console for module loading errors.
+## Testing the Configurator
+
+- Run `start-server.bat` (Windows) or `python -m http.server` to start the local dev server.
+- Use the **Rebuild** button in the UI to force a refresh of the output script generation.
+- Check browser console for UI and JS module loading errors.
+
+## Testing the Game Tweaks (Lua Specs)
+
+We enforce strict validation of all `.lua` configs through an automated Node.js test suite before they ever hit the game lobby.
+
+**Prerequisites:** Node.js installed locally.
+
+```bash
+# Install Jest, Luaparse, and dependencies
+npm install
+
+# Run the test suite against the tweaks/ folder
+npm test
+```
+
+### What does `npm test` check?
+1. **`validate_lua.test.js`**: Syntax and Semantics Check. Ensures valid Lua and bounds-checks heavy units (e.g., no Raptor squads greater than 8 units).
+2. **`validate_bar_spec.test.js`**: Spring Engine Typing Schema. Uses AST parsing to ensure strings are `StringLiteral` nodes and stats are pure numeric fields, passing smoothly into the game's parser.

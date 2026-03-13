@@ -72,7 +72,7 @@ for _, faction in ipairs(factions) do
 		local legendaryConverterName = converterBaseName .. '_200'
 
 		cloneIfMissing(converterBaseName, legendaryConverterName, {
-			description = 'Legendary Energy Converter by Jackie',
+			description = 'Legendary cold energy converter',
 			metalcost = scaled(converterBase.metalcost, legendaryScale),
 			energycost = scaled(converterBase.energycost, legendaryScale),
 			buildtime = scaled(converterBase.buildtime, legendaryScale),
@@ -81,7 +81,7 @@ for _, faction in ipairs(factions) do
 				energyconv_capacity = scaled(baseCustom.energyconv_capacity, 2),
 				energyconv_efficiency = 0.022,
 				i18n_en_humanname = 'Legendary Energy Converter',
-				i18n_en_tooltip = 'Convert 12k energy to 264m/s by Jackie (Extremely Explosive)'
+				i18n_en_tooltip = 'Converts 12k energy to 264m/s (Extremely Explosive)'
 			}),
 			name = 'Legendary Energy Converter',
 			buildpic = converterBase.buildpic,
@@ -120,7 +120,7 @@ for _, faction in ipairs(factions) do
 		cloneIfMissing(fusionBaseName, legendaryFusionName, {
 			buildtime = scaled(fusionBase.buildtime, 1.8),
 			name = 'Legendary Fusion Reactor',
-			description = 'Legendary Fusion Reactor by Jackie (Extremely Explosive)',
+			description = 'Legendary fusion reactor (Extremely Explosive)',
 			metalcost = scaled(fusionBase.metalcost, legendaryScale),
 			energycost = scaled(fusionBase.energycost, legendaryScale),
 			energymake = scaled(fusionBase.energymake, 2.4),
@@ -160,7 +160,7 @@ for _, faction in ipairs(factions) do
 				unitgroup = 'energy',
 				usebuildinggrounddecal = true,
 				i18n_en_humanname = 'Legendary Fusion Reactor',
-				i18n_en_tooltip = 'Convert 12k energy to 264m/s by Jackie (Extremely Explosive)'
+				i18n_en_tooltip = 'Generates massive amounts of energy (Extremely Explosive)'
 			}),
 			sfxtypes = {
 				pieceexplosiongenerators = {
