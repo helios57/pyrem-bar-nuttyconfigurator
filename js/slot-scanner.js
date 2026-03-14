@@ -105,11 +105,17 @@ async function loadTweakFileList() {
             if (config && typeof config.source_file === 'string') {
                 files.add(config.source_file);
             }
+            if (config && Array.isArray(config.source_files)) {
+                config.source_files.forEach(f => files.add(f));
+            }
 
             if (Array.isArray(config.options)) {
                 config.options.forEach(option => {
                     if (option && typeof option.source_file === 'string') {
                         files.add(option.source_file);
+                    }
+                    if (option && Array.isArray(option.source_files)) {
+                        option.source_files.forEach(f => files.add(f));
                     }
                 });
             }

@@ -40,7 +40,11 @@ const COMMANDER_SECTION_IDS = new Set([
 ]);
 
 function isCommanderSection(section) {
-    return !!(section && COMMANDER_SECTION_IDS.has(section.name));
+    if (!section || !section.name) return false;
+    return COMMANDER_SECTION_IDS.has(section.name) || 
+           section.name.startsWith('ARMADA_COMMANDER_LVL') ||
+           section.name.startsWith('CORTEX_COMMANDER_LVL') ||
+           section.name.startsWith('LEGION_COMMANDER_LVL');
 }
 
 function slotHasCommander(slot) {
@@ -269,7 +273,8 @@ function packSectionsDynamically(sections, config, targets, type, allTweaks) {
     };
 
     for (const bundle of bundles) {
-        const forceArmadaCommander = bundle.sections.length === 1 && bundle.sections[0].name === 'ARMADA_COMMANDER';
+        const COMMANDER_NAMES = new Set(['ARMADA_COMMANDER', 'CORTEX_COMMANDER', 'LEGION_COMMANDER']);
+        const forceCommander = bundle.sections.length === 1 && COMMANDER_NAMES.has(bundle.sections[0].name);
         const isCommanderBundle = bundleHasCommander(bundle);
 
         if (isCommanderBundle) {
@@ -287,9 +292,9 @@ function packSectionsDynamically(sections, config, targets, type, allTweaks) {
             }
 
             let placedCommander = tryPlaceBundleInSlot(state.currentSlot, bundle, state.currentSlotNumber, config, dependencyMap, state.slotAssignments);
-            if (!placedCommander && forceArmadaCommander) {
+            if (!placedCommander && forceCommander) {
                 const sizeInfo = formatSizeInfo(bundle.lines, bundle.rawChars, bundle.encodedChars, bundle.minifiedEncodedChars, config);
-                console.warn(`Force-packing ARMADA_COMMANDER into its own slot despite size overage (${sizeInfo}).`);
+                console.warn(`Force-packing ${bundle.sections[0].name} into its own slot despite size overage (${sizeInfo}).`);
                 placedCommander = tryPlaceBundleInSlot(state.currentSlot, bundle, state.currentSlotNumber, config, dependencyMap, state.slotAssignments, true);
             }
 
@@ -330,10 +335,10 @@ function packSectionsDynamically(sections, config, targets, type, allTweaks) {
         // Try to fit the bundle in the fresh slot
         let placedFresh = tryPlaceBundleInSlot(state.currentSlot, bundle, state.currentSlotNumber, config, dependencyMap, state.slotAssignments);
 
-        // Armada commander is allowed to ignore the encoded limit and force a dedicated slot
-        if (!placedFresh && forceArmadaCommander) {
+        // Commander is allowed to ignore the encoded limit and force a dedicated slot
+        if (!placedFresh && forceCommander) {
             const sizeInfo = formatSizeInfo(bundle.lines, bundle.rawChars, bundle.encodedChars, bundle.minifiedEncodedChars, config);
-            console.warn(`Force-packing ARMADA_COMMANDER into its own slot despite size overage (${sizeInfo}).`);
+            console.warn(`Force-packing ${bundle.sections[0].name} into its own slot despite size overage (${sizeInfo}).`);
             placedFresh = tryPlaceBundleInSlot(state.currentSlot, bundle, state.currentSlotNumber, config, dependencyMap, state.slotAssignments, true);
         }
 

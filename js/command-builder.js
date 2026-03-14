@@ -467,9 +467,10 @@ function encodeAndValidateSlot(slotType, slotNum, sections, commands, usedSlots,
         const utilizationPct = Math.round(actualEncodedSize / 13000 * 100);
 
         // Validate final encoded size (13k limit)
-        const isArmadaCommander = sections.length === 1 && sections[0].name === 'ARMADA_COMMANDER';
+        const commanderNames = new Set(['ARMADA_COMMANDER', 'CORTEX_COMMANDER', 'LEGION_COMMANDER']);
+        const isCommander = sections.length === 1 && commanderNames.has(sections[0].name);
 
-        if (!isArmadaCommander && actualEncodedSize > 13000) {
+        if (!isCommander && actualEncodedSize > 13000) {
             const errMsg = `SLOT SIZE ERROR: ${slotName} exceeds 13k limit (${actualEncodedSize}/13000). Split sections further.`;
             console.error(errMsg);
             console.error(`   Sections: ${sections.map(s => s.name).join(', ')}`);
@@ -915,6 +916,21 @@ async function generateDynamicSlotCommands(tweakFileCache, packIntoSlots, getSlo
                 } else {
                     regularSections.push(sectionData);
                     console.log(`Selected: ${markerName} from ${filePath}`);
+                }
+                
+                // Automatically load commander level pieces (_LVL2, _LVL3, etc.)
+                for (let i = 2; i <= 6; i++) {
+                    const partName = `${markerName}_LVL${i}`;
+                    for (const [cacheFile, cacheSections] of Object.entries(tweakFileCache)) {
+                        const partSection = cacheSections.find(s => s.name === partName);
+                        if (partSection) {
+                            let partData = { ...partSection, file: cacheFile, type: type };
+                            partData = applyMaxThisUnitOverride(partData);
+                            regularSections.push(partData);
+                            console.log(`Selected additional part: ${partName} from ${cacheFile}`);
+                            break;
+                        }
+                    }
                 }
             }
         }

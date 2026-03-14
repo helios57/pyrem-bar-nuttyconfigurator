@@ -673,6 +673,11 @@ async function generateDynamicCheckboxUI(tweakFileCache, updateOutputCallback) {
                 if (isDedicatedWaveSection) {
                     return;
                 }
+                
+                // Skip _LVL sections (handled implicitly by command-builder.js)
+                if (typeof section.name === 'string' && section.name.includes('_LVL')) {
+                    return;
+                }
 
                 // Check if this section should be hidden (using dynamic-tweaks.json config)
                 let shouldHide = false;

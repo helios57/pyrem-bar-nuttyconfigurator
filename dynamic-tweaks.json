@@ -45,7 +45,15 @@
         {
           "id": "ARMADA_COMMANDER",
           "label": "Armada Commander (Evolving)",
-          "source_file": "tweaks/Units_NuttyB_Evolving_Commanders_Armada.lua",
+          "source_files": [
+            "tweaks/Units_NuttyB_Evolving_Commanders_Armada_Base.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Armada_Lvl2.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Armada_Lvl3.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Armada_Lvl4.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Armada_Lvl5.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Armada_Lvl6.lua"
+          ],
+          "source_file": "tweaks/Units_NuttyB_Evolving_Commanders_Armada_Base.lua",
           "markers": {
             "start": "-- ARMADA_COMMANDER_START",
             "end": "-- ARMADA_COMMANDER_END"
@@ -55,7 +63,15 @@
         {
           "id": "CORTEX_COMMANDER",
           "label": "Cortex Commander (Evolving)",
-          "source_file": "tweaks/Units_NuttyB_Evolving_Commanders_Cortex.lua",
+          "source_files": [
+            "tweaks/Units_NuttyB_Evolving_Commanders_Cortex_Base.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Cortex_Lvl2.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Cortex_Lvl3.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Cortex_Lvl4.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Cortex_Lvl5.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Cortex_Lvl6.lua"
+          ],
+          "source_file": "tweaks/Units_NuttyB_Evolving_Commanders_Cortex_Base.lua",
           "markers": {
             "start": "-- CORTEX_COMMANDER_START",
             "end": "-- CORTEX_COMMANDER_END"
@@ -65,7 +81,15 @@
         {
           "id": "LEGION_COMMANDER",
           "label": "Legion Commander (Evolving)",
-          "source_file": "tweaks/Units_NuttyB_Evolving_Commanders_Legion.lua",
+          "source_files": [
+            "tweaks/Units_NuttyB_Evolving_Commanders_Legion_Base.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Legion_Lvl2.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Legion_Lvl3.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Legion_Lvl4.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Legion_Lvl5.lua",
+            "tweaks/Units_NuttyB_Evolving_Commanders_Legion_Lvl6.lua"
+          ],
+          "source_file": "tweaks/Units_NuttyB_Evolving_Commanders_Legion_Base.lua",
           "markers": {
             "start": "-- LEGION_COMMANDER_START",
             "end": "-- LEGION_COMMANDER_END"

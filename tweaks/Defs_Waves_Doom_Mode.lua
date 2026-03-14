@@ -254,9 +254,13 @@ local defs = UnitDefs or {}
 local merge = table.merge
 
 local function squad(minAnger, maxAnger, behavior, amount, rarity, weight, distance, chance)
+    local originalAmount = amount or 1
+    local adjustedAmount = math.max(1, math.floor(originalAmount / 2))
+    local compMult = originalAmount / adjustedAmount
+
     return {
         raptorcustomsquad = true,
-        raptorsquadunitsamount = amount or 1,
+        raptorsquadunitsamount = adjustedAmount,
         raptorsquadminanger = minAnger,
         raptorsquadmaxanger = maxAnger,
         raptorsquadweight = weight or 1,
@@ -264,6 +268,7 @@ local function squad(minAnger, maxAnger, behavior, amount, rarity, weight, dista
         raptorsquadbehavior = behavior or 'berserk',
         raptorsquadbehaviordistance = distance or 500,
         raptorsquadbehaviorchance = chance or 0.75,
+        _doom_comp_mult = compMult,
     }
 end
 
@@ -273,6 +278,9 @@ local function assignSquad(name, params, label, tooltip)
         return
     end
 
+    local compMult = params._doom_comp_mult or 1
+    params._doom_comp_mult = nil
+
     local custom = merge(unitDef.customparams or {}, params)
     if label then
         custom.i18n_en_humanname = label
@@ -281,6 +289,23 @@ local function assignSquad(name, params, label, tooltip)
         custom.i18n_en_tooltip = tooltip
     end
     unitDef.customparams = custom
+
+    if compMult > 1.01 then
+        if unitDef.health then
+            unitDef.health = math.floor(unitDef.health * compMult + 0.5)
+        end
+        if unitDef.weapondefs then
+            for _, wdef in pairs(unitDef.weapondefs) do
+                if wdef.damage then
+                    for k, v in pairs(wdef.damage) do
+                        if type(v) == "number" then
+                            wdef.damage[k] = math.floor(v * compMult + 0.5)
+                        end
+                    end
+                end
+            end
+        end
+    end
 end
 
 assignSquad('raptor_land_assault_basic_t2_v1', squad(0, 18, 'berserk', 6, 'basic', 7, 500, 0.82))
