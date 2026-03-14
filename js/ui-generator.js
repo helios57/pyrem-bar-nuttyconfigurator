@@ -120,6 +120,22 @@ function generateRaptorWaveDropdown(updateOutputCallback) {
     const resolvedDefault = defaultValue
         || (optionsToUse.some(opt => opt.value === 'mini_bosses') ? 'mini_bosses' : optionsToUse[0].value);
 
+    const dropdownInfo = document.createElement('div');
+    dropdownInfo.style.fontSize = '0.9em';
+    dropdownInfo.style.color = '#888';
+    dropdownInfo.style.marginTop = '8px';
+    dropdownInfo.id = 'raptor-wave-description';
+
+    const updateDescription = (value) => {
+        if (value === 'doom_mode') {
+            dropdownInfo.innerHTML = '<strong>Doom Mode:</strong> Extreme difficulty! Spawns fewer raptors to improve end-game performance, but significantly increases their health and damage to compensate.';
+        } else if (value === 'mini_bosses') {
+            dropdownInfo.innerHTML = '<strong>Mini Bosses:</strong> Spawns periodic Mini Bosses among the raptor waves.';
+        } else {
+            dropdownInfo.innerHTML = waveConfig?.description || 'Choose Mini Bosses or Doom Mode for Raptors mode';
+        }
+    };
+
     const radioGroup = document.createElement('div');
     radioGroup.className = 'raptor-wave-radio-group';
     radioGroup.id = 'raptor-wave-mode';
@@ -143,8 +159,11 @@ function generateRaptorWaveDropdown(updateOutputCallback) {
         radio.dataset.defaultChecked = isDefault ? 'true' : 'false';
 
         radio.addEventListener('change', () => {
-            if (radio.checked && typeof updateOutputCallback === 'function') {
-                updateOutputCallback();
+            if (radio.checked) {
+                updateDescription(option.value);
+                if (typeof updateOutputCallback === 'function') {
+                    updateOutputCallback();
+                }
             }
         });
 
@@ -170,11 +189,7 @@ function generateRaptorWaveDropdown(updateOutputCallback) {
 
     selectorContainer.appendChild(radioGroup);
 
-    const dropdownInfo = document.createElement('div');
-    dropdownInfo.style.fontSize = '0.9em';
-    dropdownInfo.style.color = '#888';
-    dropdownInfo.style.marginTop = '5px';
-    dropdownInfo.textContent = waveConfig?.description || 'Choose Mini Bosses or Doom Mode for Raptors mode';
+    updateDescription(resolvedDefault);
     selectorContainer.appendChild(dropdownInfo);
 
     // Insert at the beginning of the container
