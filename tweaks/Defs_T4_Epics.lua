@@ -577,7 +577,7 @@ ensureBuildOptions(builders_arm_aegis, 'epic_aegis')
 end
 -- EPIC_AEGIS_END
 
--- EPIC_BULWARK_START
+-- EPIC_BARRIER_START
 do
 local d,m=UnitDefs or{},table.merge
 local e=d.corgatet3
@@ -595,7 +595,7 @@ if e then
 		end
 	end
 	local u=c(e)
-	u.name='Epic Bulwark'
+	u.name='Epic Barrier'
 	u.description='Ultimate shield hub. Projects an impenetrable energy barrier.'
 	u.buildtime=x(e.buildtime,1.7)
 	u.health=x(e.health,2.5)
@@ -624,17 +624,17 @@ if e then
 	u.weapons={{def='epic_shield'}}
 
 	u.customparams=m(c(e.customparams or{}),{
-		i18n_en_humanname='Epic Bulwark',
+		i18n_en_humanname='Epic Barrier',
 		i18n_en_tooltip='Massive shield generator',
 		techlevel=4,
 		shield_power=sh.power,
 		shield_radius=sh.radius
 	})
 
-	d.epic_bulwark=u
+	d.epic_barrier=u
 end
 
-local builders_cor_bulwark={'coraca','corack','coracsub','coracv','cort3aide','cort3airaide'}
+local builders_cor_barrier={'coraca','corack','coracsub','coracv','cort3aide','cort3airaide'}
 
 local function ensureBuildOptions(list, name)
 	if not d[name] then return end
@@ -652,11 +652,11 @@ local function ensureBuildOptions(list, name)
 end
 
 for i=3,10 do
-	table.insert(builders_cor_bulwark,'corcomlvl'..i)
+	table.insert(builders_cor_barrier,'corcomlvl'..i)
 end
-ensureBuildOptions(builders_cor_bulwark, 'epic_bulwark')
+ensureBuildOptions(builders_cor_barrier, 'epic_barrier')
 end
--- EPIC_BULWARK_END
+-- EPIC_BARRIER_END
 
 -- FORTRESS_START
 
