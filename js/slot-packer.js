@@ -275,43 +275,6 @@ function packSectionsDynamically(sections, config, targets, type, allTweaks) {
     for (const bundle of bundles) {
         const COMMANDER_NAMES = new Set(['ARMADA_COMMANDER', 'CORTEX_COMMANDER', 'LEGION_COMMANDER']);
         const forceCommander = bundle.sections.length === 1 && COMMANDER_NAMES.has(bundle.sections[0].name);
-        const isCommanderBundle = bundleHasCommander(bundle);
-
-        if (isCommanderBundle) {
-            if (state.currentSlot.sections.length > 0) {
-                finalizeSlot(slots, state.currentSlot, state.currentSlotNumber++);
-                if (state.currentSlotNumber > 9) {
-                    console.warn(`Warning: Exceeded maximum 9 slots for ${type}. Some sections may not be included.`);
-                    break;
-                }
-                state.currentSlot = createEmptySlot();
-            }
-
-            if (state.currentSlotNumber > 9) {
-                break;
-            }
-
-            let placedCommander = tryPlaceBundleInSlot(state.currentSlot, bundle, state.currentSlotNumber, config, dependencyMap, state.slotAssignments);
-            if (!placedCommander && forceCommander) {
-                const sizeInfo = formatSizeInfo(bundle.lines, bundle.rawChars, bundle.encodedChars, bundle.minifiedEncodedChars, config);
-                console.warn(`Force-packing ${bundle.sections[0].name} into its own slot despite size overage (${sizeInfo}).`);
-                placedCommander = tryPlaceBundleInSlot(state.currentSlot, bundle, state.currentSlotNumber, config, dependencyMap, state.slotAssignments, true);
-            }
-
-            if (placedCommander) {
-                finalizeSlot(slots, state.currentSlot, state.currentSlotNumber++);
-                if (state.currentSlotNumber > 9) {
-                    console.warn(`Warning: Exceeded maximum 9 slots for ${type}. Some sections may not be included.`);
-                    break;
-                }
-                state.currentSlot = createEmptySlot();
-                continue;
-            }
-
-            const sizeInfo = formatSizeInfo(bundle.lines, bundle.rawChars, bundle.encodedChars, bundle.minifiedEncodedChars, config);
-            console.warn(`Commander bundle ${bundle.file} could not be packed (${sizeInfo}).`);
-            continue;
-        }
 
         // Try current slot first
         if (tryPlaceBundleInSlot(state.currentSlot, bundle, state.currentSlotNumber, config, dependencyMap, state.slotAssignments)) {
@@ -719,15 +682,17 @@ function estimateMinifiedEncoded(code) {
  * @returns {boolean} True if bundle fits
  */
 function canBundleFitInSlot(slot, bundle, limits) {
+    // Check if slot or bundle contains a commander section
     const slotContainsCommander = slotHasCommander(slot);
     const bundleContainsCommander = bundleHasCommander(bundle);
 
-    if (slotContainsCommander) {
-        return false; // Commander slots cannot accept additional sections
-    }
-
-    if (bundleContainsCommander && slot.sections.length > 0) {
-        return false; // Commanders must occupy a dedicated slot
+    if (slotContainsCommander && bundleContainsCommander) {
+        // Allow commander sections to pack together if they fit
+    } else if (slotContainsCommander || bundleContainsCommander) {
+        // Don't mix commander and non-commander sections
+        if (slot.sections.length > 0) {
+            return false;
+        }
     }
 
     const newLines = slot.lines + bundle.lines;
@@ -925,12 +890,12 @@ function canFitInSlot(slot, section, limits) {
     const slotContainsCommander = slotHasCommander(slot);
     const sectionIsCommander = isCommanderSection(section);
 
-    if (slotContainsCommander) {
-        return false; // Do not mix anything into a commander slot
-    }
-
-    if (sectionIsCommander && slot.sections.length > 0) {
-        return false; // Commanders must be alone
+    if (slotContainsCommander && sectionIsCommander) {
+        // Allow commander sections to pack together if they fit
+    } else if (slotContainsCommander || sectionIsCommander) {
+        if (slot.sections.length > 0) {
+            return false;
+        }
     }
 
     const newLines = slot.lines + section.lines;
