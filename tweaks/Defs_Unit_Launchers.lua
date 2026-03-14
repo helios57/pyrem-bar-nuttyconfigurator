@@ -95,14 +95,22 @@ local function ensureBuildOptions(list, name)
 	end
 end
 
-if UnitDefs.cormandot4 then
-    for c,d in pairs(b)do
-        local e=a..'_'..c;
-        if UnitDefs[a]and not UnitDefs[e]then
-            UnitDefs[e]=table.merge(
-            UnitDefs[a],d)
-            ensureBuildOptions({'cormandot4'}, e)
-        end
+local launcherMap = {
+    armt3 = "armcomlvl4",
+    cort3 = "cormandot4",
+    legt3 = "legcomlvl4"
+}
+
+for c,d in pairs(b) do
+    local e = a .. '_' .. c
+    local targetCom = launcherMap[c]
+    
+    if UnitDefs[a] and not UnitDefs[e] then
+        UnitDefs[e] = table.merge(table.deepcopy(UnitDefs[a]), d)
+    end
+    
+    if UnitDefs[targetCom] and UnitDefs[e] then
+        ensureBuildOptions({targetCom}, e)
     end
 end
 end
