@@ -496,6 +496,168 @@ ensureBuildOptions(builders_leg_elysium, 'epic_elysium')
 end
 -- EPIC_ELYSIUM_END
 
+-- EPIC_AEGIS_START
+do
+local d,m=UnitDefs or{},table.merge
+local e=d.armgatet3
+if e then
+	local function c(t)
+		local n={}
+		for k,v in pairs(t) do
+			n[k]=type(v)=='table' and c(v) or v
+		end
+		return n
+	end
+	local function x(v,n)
+		if v then
+			return math.ceil(v*n)
+		end
+	end
+	local u=c(e)
+	u.name='Epic Aegis'
+	u.description='Ultimate shield hub. Projects an impenetrable energy barrier.'
+	u.buildtime=x(e.buildtime,1.7)
+	u.health=x(e.health,2.5)
+	u.metalcost=x(e.metalcost,1.7)
+	u.energycost=x(e.energycost,1.7)
+	u.energystorage=x(e.energystorage,1.25)
+	u.footprintx=6
+	u.footprintz=6
+	u.icontype='armgatet3'
+
+	local r=(e.weapondefs or{}).repulsor or{}
+	local rep=c(r)
+	rep.name='Epic Shield'
+	rep.weapontype='Shield'
+
+	local sh=c(r.shield or{})
+	sh.power=x(sh.power,2.5)
+	sh.powerregen=x(sh.powerregen,4.5)
+	sh.powerregenenergy=x(sh.powerregenenergy,1.9)
+	sh.radius=x(sh.radius,1.3)
+	sh.startingpower=x(sh.startingpower,1.7)
+	rep.shield=sh
+	rep.range=x(rep.range,1.3)
+
+	u.weapondefs={epic_shield=rep}
+	u.weapons={{def='epic_shield'}}
+
+	u.customparams=m(c(e.customparams or{}),{
+		i18n_en_humanname='Epic Aegis',
+		i18n_en_tooltip='Massive shield generator',
+		techlevel=4,
+		shield_power=sh.power,
+		shield_radius=sh.radius
+	})
+
+	d.epic_aegis=u
+end
+
+local builders_arm_aegis={'armaca','armack','armacsub','armacv','armt3aide','armt3airaide'}
+
+local function ensureBuildOptions(list, name)
+	if not d[name] then return end
+	for i=1, #list do
+		local u = d[list[i]]
+		if u then
+			u.buildoptions = u.buildoptions or {}
+			local found = false
+			for j=1, #u.buildoptions do
+				if u.buildoptions[j] == name then found = true; break end
+			end
+			if not found then table.insert(u.buildoptions, name) end
+		end
+	end
+end
+
+for i=3,10 do
+	table.insert(builders_arm_aegis,'armcomlvl'..i)
+end
+ensureBuildOptions(builders_arm_aegis, 'epic_aegis')
+end
+-- EPIC_AEGIS_END
+
+-- EPIC_BULWARK_START
+do
+local d,m=UnitDefs or{},table.merge
+local e=d.corgatet3
+if e then
+	local function c(t)
+		local n={}
+		for k,v in pairs(t) do
+			n[k]=type(v)=='table' and c(v) or v
+		end
+		return n
+	end
+	local function x(v,n)
+		if v then
+			return math.ceil(v*n)
+		end
+	end
+	local u=c(e)
+	u.name='Epic Bulwark'
+	u.description='Ultimate shield hub. Projects an impenetrable energy barrier.'
+	u.buildtime=x(e.buildtime,1.7)
+	u.health=x(e.health,2.5)
+	u.metalcost=x(e.metalcost,1.7)
+	u.energycost=x(e.energycost,1.7)
+	u.energystorage=x(e.energystorage,1.25)
+	u.footprintx=6
+	u.footprintz=6
+	u.icontype='corgatet3'
+
+	local r=(e.weapondefs or{}).repulsor or{}
+	local rep=c(r)
+	rep.name='Epic Shield'
+	rep.weapontype='Shield'
+
+	local sh=c(r.shield or{})
+	sh.power=x(sh.power,2.5)
+	sh.powerregen=x(sh.powerregen,4.5)
+	sh.powerregenenergy=x(sh.powerregenenergy,1.9)
+	sh.radius=x(sh.radius,1.3)
+	sh.startingpower=x(sh.startingpower,1.7)
+	rep.shield=sh
+	rep.range=x(rep.range,1.3)
+
+	u.weapondefs={epic_shield=rep}
+	u.weapons={{def='epic_shield'}}
+
+	u.customparams=m(c(e.customparams or{}),{
+		i18n_en_humanname='Epic Bulwark',
+		i18n_en_tooltip='Massive shield generator',
+		techlevel=4,
+		shield_power=sh.power,
+		shield_radius=sh.radius
+	})
+
+	d.epic_bulwark=u
+end
+
+local builders_cor_bulwark={'coraca','corack','coracsub','coracv','cort3aide','cort3airaide'}
+
+local function ensureBuildOptions(list, name)
+	if not d[name] then return end
+	for i=1, #list do
+		local u = d[list[i]]
+		if u then
+			u.buildoptions = u.buildoptions or {}
+			local found = false
+			for j=1, #u.buildoptions do
+				if u.buildoptions[j] == name then found = true; break end
+			end
+			if not found then table.insert(u.buildoptions, name) end
+		end
+	end
+end
+
+for i=3,10 do
+	table.insert(builders_cor_bulwark,'corcomlvl'..i)
+end
+ensureBuildOptions(builders_cor_bulwark, 'epic_bulwark')
+end
+-- EPIC_BULWARK_END
+
 -- FORTRESS_START
 
 do

@@ -96,21 +96,25 @@ local function ensureBuildOptions(list, name)
 end
 
 local launcherMap = {
-    armt3 = "armcomlvl4",
-    cort3 = "cormandot4",
-    legt3 = "legcomlvl4"
+    armt3 = { "armcomlvl4", "armt3aide", "armt3airaide" },
+    cort3 = { "cormandot4", "cort3aide", "cort3airaide" },
+    legt3 = { "legcomlvl4", "legt3aide", "legt3airaide" }
 }
 
 for c,d in pairs(b) do
     local e = a .. '_' .. c
-    local targetCom = launcherMap[c]
+    local targetList = launcherMap[c]
     
     if UnitDefs[a] and not UnitDefs[e] then
         UnitDefs[e] = table.merge(table.deepcopy(UnitDefs[a]), d)
     end
     
-    if UnitDefs[targetCom] and UnitDefs[e] then
-        ensureBuildOptions({targetCom}, e)
+    if UnitDefs[e] then
+        for _, builder in ipairs(targetList) do
+            if UnitDefs[builder] then
+                ensureBuildOptions({builder}, e)
+            end
+        end
     end
 end
 end
