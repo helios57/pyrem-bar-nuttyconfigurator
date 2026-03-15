@@ -6,6 +6,8 @@
 
 The **NuttyB Configurator** is an integrated web application used to dynamically generate configuration files (`.lua` scripts) for Beyond All Reason (BAR) tweaks. Through a user-friendly UI component, server hosts can mix and match game-changing modes—such as Doom Mode, Epic Units, Mini-Bosses—while respecting the strict 13KB custom parameter limits per lobby slot via an intelligent First-Fit Decreasing packing algorithm.
 
+🔗 **Live Configurator**: [https://helios57.github.io/pyrem-bar-nuttyconfigurator/](https://helios57.github.io/pyrem-bar-nuttyconfigurator/)
+
 ---
 
 ## 🌟 Tweak Modules Overview
@@ -20,7 +22,9 @@ The Configurator features an extensive library of modular injects that radically
 
 ## 🚀 Quick Start
 
-To launch the web configurator locally, you can use the built-in scripts or run a manual local server.
+The easiest way to use the configurator is via the hosted version at [https://helios57.github.io/pyrem-bar-nuttyconfigurator/](https://helios57.github.io/pyrem-bar-nuttyconfigurator/).
+
+To run it locally instead, you can use the built-in scripts or a manual local server.
 
 ### Option 1: Using the Quick Start Script (Windows)
 ```bash
