@@ -125,6 +125,9 @@ async function loadTweakFileList() {
                     if (option && typeof option.source_file === 'string') {
                         files.add(option.source_file);
                     }
+                    if (option && Array.isArray(option.source_files)) {
+                        option.source_files.forEach(f => files.add(f));
+                    }
                 });
             }
         });

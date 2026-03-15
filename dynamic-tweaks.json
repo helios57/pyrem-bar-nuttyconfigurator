@@ -404,6 +404,10 @@
           "value": "doom_mode",
           "label": "Doom Mode",
           "source_file": "tweaks/Defs_Waves_Doom_Mode.lua",
+          "source_files": [
+            "tweaks/Defs_Waves_Doom_Mode.lua",
+            "tweaks/Units_Doom_Mode_Commanders.lua"
+          ],
           "markers": {
             "start": "-- DOOM_MODE_CORE_START",
             "end": "-- DOOM_MODE_CORE_END"

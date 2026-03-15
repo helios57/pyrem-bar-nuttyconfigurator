@@ -832,6 +832,22 @@ async function generateDynamicSlotCommands(tweakFileCache, packIntoSlots, getSlo
             });
 
         }
+
+        // Doom Mode companion: 5x commander health boost (must be tweakunits to run after commander defs)
+        if (raptorWaveValue === 'doom_mode') {
+            const doomUnitsFile = 'tweaks/Units_Doom_Mode_Commanders.lua';
+            if (tweakFileCache[doomUnitsFile]) {
+                tweakFileCache[doomUnitsFile].forEach(section => {
+                    if (section.name.includes('DOOM_MODE')) {
+                        regularSections.push({
+                            ...section,
+                            file: doomUnitsFile
+                        });
+                        console.log(`Added Doom Mode companion: ${section.name}`);
+                    }
+                });
+            }
+        }
     }
 
     // Also check for Scavenger HP multipliers (pack as regular defs)
