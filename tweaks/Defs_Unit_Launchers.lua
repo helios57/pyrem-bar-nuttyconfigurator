@@ -112,7 +112,7 @@ for c,d in pairs(b) do
     local targetList = launcherMap[c]
     
     if UnitDefs[a] and not UnitDefs[e] then
-        UnitDefs[e] = table.merge(table.deepcopy(UnitDefs[a]), d)
+        UnitDefs[e] = table.merge(table.copy(UnitDefs[a]), d)
     end
     
     if UnitDefs[e] then
