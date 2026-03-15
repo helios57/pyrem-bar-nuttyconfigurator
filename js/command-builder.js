@@ -253,7 +253,7 @@ const MAXTHISUNIT_OVERRIDE_INPUTS = [
     { id: 'maxthisunit-epic-starfall', section: 'STARFALL' }
 ];
 
-const WELCOME_MESSAGE_CMD = '$welcome-message NuttyB ModSettings made with https://relicus.github.io/pyrem-bar-nuttyconfigurator';
+const WELCOME_MESSAGE_CMD = '$welcome-message NuttyB ModSettings made with https://helios57.github.io/pyrem-bar-nuttyconfigurator';
 
 function getMaxThisUnitOverrides() {
     const overrides = {};
