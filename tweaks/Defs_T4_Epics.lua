@@ -819,6 +819,11 @@ a.epic_mercury=b(a['armmercury'],{
   },
   weapondefs={
     epic_advsam={
+      weapontype='MissileLauncher',
+      collidefriendly=0,
+      collidefeature=0,
+      avoidfriendly=0,
+      avoidfeature=0,
       areaofeffect=1200,
       energypershot=20000,
       explosiongenerator='custom:flak',
@@ -829,6 +834,8 @@ a.epic_mercury=b(a['armmercury'],{
       reloadtime=0.4,
       smoketrail=false,
       startvelocity=4000,
+      turret=true,
+      canattackground=false,
       weaponacceleration=2000,
       weaponvelocity=9000,
 	  damage={
@@ -839,7 +846,8 @@ a.epic_mercury=b(a['armmercury'],{
   },
   weapons={
     [1]={
-      def='epic_advsam'
+      def='epic_advsam',
+      onlytargetcategory='VTOL'
     }
   }
 })
@@ -863,6 +871,11 @@ a.epic_screamer=b(a['corscreamer'],{
   },
   weapondefs={
     epic_cor_advsam={
+      weapontype='MissileLauncher',
+      collidefriendly=0,
+      collidefeature=0,
+      avoidfriendly=0,
+      avoidfeature=0,
       areaofeffect=2500,
       energypershot=20000,
       explosiongenerator='custom:flak',
@@ -873,6 +886,8 @@ a.epic_screamer=b(a['corscreamer'],{
       reloadtime=0.9,
       smoketrail=false,
       startvelocity=7000,
+      turret=true,
+      canattackground=false,
       weaponacceleration=3000,
       weaponvelocity=12000,
 	  damage={
@@ -883,7 +898,8 @@ a.epic_screamer=b(a['corscreamer'],{
   },
   weapons={
     [1]={
-      def='epic_cor_advsam'
+      def='epic_cor_advsam',
+      onlytargetcategory='VTOL'
     }
   }
 })
@@ -907,6 +923,7 @@ a.epic_flak=b(a['legflak'],{
   },
   weapondefs={
     epic_legflak_gun={
+      weapontype='Cannon',
       collidefriendly=0,
       collidefeature=0,
       avoidfeature=0,
@@ -914,9 +931,12 @@ a.epic_flak=b(a['legflak'],{
       areaofeffect=1800,
       burst=12,
 	  burstrate=0.1,
+      cylindertargeting=1,
       range=4500,
 	  reloadtime=2.0,
       intensity=0.6,
+      turret=true,
+      canattackground=false,
       weaponvelocity=4500,
 	  damage={
         default=2500,
@@ -926,7 +946,8 @@ a.epic_flak=b(a['legflak'],{
   },
   weapons={
     [1]={
-      def='epic_legflak_gun'
+      def='epic_legflak_gun',
+      onlytargetcategory='VTOL'
     }
   }
 })

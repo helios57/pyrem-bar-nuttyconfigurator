@@ -96,10 +96,16 @@ local function ensureBuildOptions(list, name)
 end
 
 local launcherMap = {
-    armt3 = { "armcomlvl4", "armt3aide", "armt3airaide" },
-    cort3 = { "cormandot4", "cort3aide", "cort3airaide" },
-    legt3 = { "legcomlvl4", "legt3aide", "legt3airaide" }
+    armt3 = { "armaca", "armack", "armacsub", "armacv", "armt3aide", "armt3airaide" },
+    cort3 = { "coraca", "corack", "coracsub", "coracv", "cort3aide", "cort3airaide" },
+    legt3 = { "legaca", "legack", "legacsub", "legacv", "legt3aide", "legt3airaide" }
 }
+
+for i=3,10 do
+    table.insert(launcherMap.armt3, 'armcomlvl'..i)
+    table.insert(launcherMap.cort3, 'corcomlvl'..i)
+    table.insert(launcherMap.legt3, 'legcomlvl'..i)
+end
 
 for c,d in pairs(b) do
     local e = a .. '_' .. c
