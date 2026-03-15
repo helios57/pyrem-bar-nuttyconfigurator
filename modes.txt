@@ -12,14 +12,10 @@
 !experimentallegionfaction 1
 !experimentalshields bounceeverything
 !maxunits 10000
-!multiplier_buildtimecost 1
 !multiplier_energyconversion 1
-!multiplier_energycost 1
 !multiplier_energyproduction 1
 !multiplier_losrange 1
-!multiplier_maxdamage 1
 !multiplier_maxvelocity 1
-!multiplier_metalcost 1
 !multiplier_metalextraction 1
 !multiplier_radarrange 1
 !multiplier_turnrate 1
@@ -41,7 +37,6 @@
 !unit_restrictions_nonukes 0
 !draft_mode disabled
 !unit_restrictions_notacnukes 0
-!unit_market 0
 !evocom 0
 !nowasting all
 !bSet unit_restrictions_nonukes 1
