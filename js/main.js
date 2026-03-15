@@ -43,7 +43,7 @@
                 multipliers: [
                     { id: 'multiplier_resourceincome', label: 'Resource Income', default: 2.5, min: 0.1, max: 10, step: 0.1 },
                     { id: 'multiplier_shieldpower', label: 'Shield Power', default: 2.0, min: 0.1, max: 10, step: 0.1 },
-                    { id: 'multiplier_builddistance', label: 'Build Range', default: 2.0, min: 1, max: 10, step: 0.1 },
+                    { id: 'multiplier_builddistance', label: 'Build Range', default: 2, min: 1, max: 10, step: 1 },
                     { id: 'multiplier_buildpower', label: 'Build Power', default: 2.0, min: 0.1, max: 10, step: 0.1 }
                 ]
             },

@@ -88,7 +88,7 @@ function formatMultiplierValueForCommand(value, multiplierConfig) {
     if (multiplierConfig.id === 'multiplier_builddistance') {
         const numericValue = Number.parseFloat(value);
         if (Number.isFinite(numericValue)) {
-            return numericValue.toFixed(1);
+            return Math.round(numericValue);
         }
     }
 
