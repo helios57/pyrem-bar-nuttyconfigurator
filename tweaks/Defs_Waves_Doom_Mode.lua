@@ -120,6 +120,16 @@ boost('raptor_land_assault_basic_t2_v1', { health = 1.18, speed = 1.04 })
 boost('raptor_allterrain_arty_basic_t2_v1', { health = 1.2 })
 boost('raptor_air_fighter_basic_t2_v1', { health = 1.14, speed = 1.05 })
 boost('raptor_land_swarmer_heal_t2_v1', { health = 1.18, autoheal = 1.25 })
+
+-- Commander 5x health boost for Doom Mode survivability
+local comPrefixes = { 'armcom', 'corcom', 'legcom' }
+for _, prefix in ipairs(comPrefixes) do
+    boost(prefix, { health = 5 })
+    for lvl = 2, 6 do
+        boost(prefix .. 'lvl' .. lvl, { health = 5 })
+    end
+end
+
 cap('raptor_matriarch_fire', 1)
 cap('raptor_matriarch_basic', 1)
 cap('raptor_queen_veryeasy', 1)
