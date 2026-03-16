@@ -824,7 +824,8 @@ a.epic_mercury=b(a['armmercury'],{
       collidefeature=0,
       avoidfriendly=0,
       avoidfeature=0,
-      areaofeffect=1200,
+      collideground=false,
+      areaofeffect=420,
       energypershot=20000,
       explosiongenerator='custom:flak',
       flighttime=3,
@@ -836,10 +837,11 @@ a.epic_mercury=b(a['armmercury'],{
       startvelocity=4000,
       turret=true,
       canattackground=false,
+      noselfdamage=true,
       weaponacceleration=2000,
       weaponvelocity=9000,
 	  damage={
-        default=5500,
+        default=50,
         vtol=6500,
       }
     }
@@ -876,7 +878,8 @@ a.epic_screamer=b(a['corscreamer'],{
       collidefeature=0,
       avoidfriendly=0,
       avoidfeature=0,
-      areaofeffect=2500,
+      collideground=false,
+      areaofeffect=520,
       energypershot=20000,
       explosiongenerator='custom:flak',
       flighttime=2,
@@ -888,10 +891,11 @@ a.epic_screamer=b(a['corscreamer'],{
       startvelocity=7000,
       turret=true,
       canattackground=false,
+      noselfdamage=true,
       weaponacceleration=3000,
       weaponvelocity=12000,
 	  damage={
-        default=8500,
+        default=50,
         vtol=9500,
       }
     }
@@ -928,7 +932,8 @@ a.epic_flak=b(a['legflak'],{
       collidefeature=0,
       avoidfeature=0,
       avoidfriendly=0,
-      areaofeffect=1800,
+      collideground=false,
+      areaofeffect=480,
       burst=12,
 	  burstrate=0.1,
       cylindertargeting=1,
@@ -937,9 +942,10 @@ a.epic_flak=b(a['legflak'],{
       intensity=0.6,
       turret=true,
       canattackground=false,
+      noselfdamage=true,
       weaponvelocity=4500,
 	  damage={
-        default=2500,
+        default=50,
         vtol=3500,
       }
     }

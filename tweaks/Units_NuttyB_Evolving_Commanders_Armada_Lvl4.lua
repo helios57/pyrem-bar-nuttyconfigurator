@@ -43,6 +43,11 @@
 	    'armannit4',
 	    'armnanotct3',
     },
+    customparams = {
+      evolution_target = 'armcomlvl5',
+      evolution_condition = 'timer_global',
+      evolution_timer = 2400,
+    },
     weapondefs = {
       old_armsnipe_weapon = {
         areaofeffect = 72,

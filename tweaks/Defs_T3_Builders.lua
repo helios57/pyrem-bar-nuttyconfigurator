@@ -107,11 +107,11 @@ for l,m in pairs(b)do
         for l,x in ipairs(w[m]or {})do t[#t+1]=x..e
         end
         local y= {
-            arm= {'armamd','armmercury','armbrtha','armminivulc','armvulc','armannit3','armlwall','armannit4'
+            arm= {'armamd','armmercury','armbrtha','armminivulc','armvulc','armannit3','armlwall','armannit4','armbotrail_armt3'
             },
-            cor= {'corfmd','corscreamer','cordoomt3','corbuzz','corminibuzz','corint','corhllllt','cormwall','cordoomt4','epic_calamity'
+            cor= {'corfmd','corscreamer','cordoomt3','corbuzz','corminibuzz','corint','corhllllt','cormwall','cordoomt4','epic_calamity','armbotrail_cort3'
             },
-            leg= {'legabm','legstarfall','legministarfall','leglraa','legbastion','legrwall','leglrpc','legbastiont4','legdtf'
+            leg= {'legabm','legstarfall','legministarfall','leglraa','legbastion','legrwall','leglrpc','legbastiont4','legdtf','armbotrail_legt3'
             }
         }
         for l,v in ipairs(y[m]or {})do t[#t+1]=v
